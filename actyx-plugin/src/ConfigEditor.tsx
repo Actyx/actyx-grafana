@@ -3,12 +3,10 @@ import { QueryField } from '@grafana/ui';
 import { DataSourcePluginOptionsEditorProps } from '@grafana/data';
 import { MyDataSourceOptions } from './types';
 
-interface Props extends DataSourcePluginOptionsEditorProps<MyDataSourceOptions> {}
+type Props = DataSourcePluginOptionsEditorProps<MyDataSourceOptions>;
 
-interface State {}
-
-export class ConfigEditor extends PureComponent<Props, State> {
-  onManifestChange = (value: string) => {
+export class ConfigEditor extends PureComponent<Props> {
+  onManifestChange = (value: string): void => {
     const { onOptionsChange, options } = this.props;
     const jsonData = {
       ...options.jsonData,
@@ -17,7 +15,7 @@ export class ConfigEditor extends PureComponent<Props, State> {
     onOptionsChange({ ...options, jsonData });
   };
 
-  render() {
+  render(): JSX.Element {
     const { options } = this.props;
     const { jsonData } = options;
 

@@ -9,12 +9,12 @@ import { defaultQuery, MyDataSourceOptions, MyQuery } from './types';
 type Props = QueryEditorProps<DataSource, MyQuery, MyDataSourceOptions>;
 
 export class QueryEditor extends PureComponent<Props> {
-  onQueryTextChange = (value: string) => {
+  onQueryTextChange = (value: string): void => {
     const { onChange, query } = this.props;
     onChange({ ...query, queryText: value });
   };
 
-  render() {
+  render(): JSX.Element {
     const query = defaults(this.props.query, defaultQuery);
     const { queryText } = query;
 
